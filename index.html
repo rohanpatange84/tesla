@@ -5,54 +5,112 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TESLA 2023</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 </head>
 <body>
-    <div class="div1"><a href="" class="div1a"><U>Road Tesla's 2020 Impact Report</U></a></div>
-   
+
+    <!-- Announcement Bar -->
+    <div class="div1">
+        <a href="#" class="div1a"><u>Read Tesla's 2020 Impact Report</u></a>
+    </div>
+
+    <!-- Hero Section -->
     <div class="bimg">
         <div class="recover">
-        <div class="nav">
-            <div class="logo"></div>
-            <div class="nav1a">
-            <div class="nav1"><a href="">Model S</a></div>
-            <div class="nav1"><a href="">Model 4</a></div>
-            <div class="nav1"><a href="">Model X</a></div>
-            <div class="nav1"><a href="">Model Y</a></div>
-            <div class="nav1"><a href="">Solar Roof</a></div>
-            <div class="nav1"><a href="">Solar Panels</a></div>
+
+            <!-- Navigation -->
+            <nav class="nav">
+                <div class="logo"></div>
+
+                <!-- Desktop Nav Links -->
+                <div class="nav1a">
+                    <div class="nav1"><a href="#">Model S</a></div>
+                    <div class="nav1"><a href="#">Model 4</a></div>
+                    <div class="nav1"><a href="#">Model X</a></div>
+                    <div class="nav1"><a href="#">Model Y</a></div>
+                    <div class="nav1"><a href="#">Solar Roof</a></div>
+                    <div class="nav1"><a href="#">Solar Panels</a></div>
+                </div>
+
+                <!-- Desktop Right Nav -->
+                <div class="nav2a">
+                    <div class="nav2"><a href="#">Shop</a></div>
+                    <div class="nav2"><a href="#">Account</a></div>
+                </div>
+
+                <!-- Hamburger Button (mobile only) -->
+                <button class="hamburger" id="hamburger" aria-label="Open navigation menu" aria-expanded="false">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </nav>
+
+            <!-- Mobile Drawer Menu -->
+            <div class="mobile-nav" id="mobileNav" aria-hidden="true">
+                <a href="#" class="mob-link">Model S</a>
+                <a href="#" class="mob-link">Model 4</a>
+                <a href="#" class="mob-link">Model X</a>
+                <a href="#" class="mob-link">Model Y</a>
+                <a href="#" class="mob-link">Solar Roof</a>
+                <a href="#" class="mob-link">Solar Panels</a>
+                <hr class="mob-divider">
+                <a href="#" class="mob-link">Shop</a>
+                <a href="#" class="mob-link">Account</a>
+                <a href="#" class="mob-link">Menu</a>
             </div>
-            <div class="nav2a">
-            <div class="nav2"><a href="">Shop</a></div>
-            <div class="nav2"><a href="">Account</a></div>
-            <div class="nav2"><a href="">Menu</a></div>
-            </DIV>
+
+            <!-- Hero Content -->
+            <div class="hero-content">
+                <p class="hero-title">Model S</p>
+                <p class="other">Order Online for <a href="#" class="a2">Touchless Delivery</a></p>
+
+                <div class="button">
+                    <div class="b1"><button class="b11">CUSTOM ORDER</button></div>
+                    <div class="b2"><button class="b22">EXISTING INVENTORY</button></div>
+                </div>
+            </div>
+
         </div>
-    <p>Model S</p>
-    <p class="other">Order Online for <a href=""class="a2">Touchless Delivery</a></p>
-   
-   
-    
-    
-    <div class="button">
-       <div class="b1"><button class="b11">CUSTOM ORDER</button></div>
-       <div class="b2"><BUTTON class="b22">EXISTING INVENTORY</BUTTON></div>
-    </div>
     </div>
 
+    <!-- Footer -->
+    <p class="add">@rohan_b_patange</p>
 
-    </div>
-    <br>
-    <br>
-   <p class="add">@rohan_b_patange</p>
+    <!-- Audio -->
+    <audio id="myaudio" src="music.mp3"></audio>
 
-   <audio id="myaudio" autoplay src="music.mp3"></audio>
-   <script>
-    var audio = document.getElementById("myaudio");
-    audio.volume = 0.4;
-  </script>
-    
-  
-    
+    <script>
+        // ── Audio: play on first user interaction ──────────────────────────
+        var audio = document.getElementById("myaudio");
+        audio.volume = 0.4;
+        document.addEventListener("click", function startAudio() {
+            audio.play().catch(function () {});
+        }, { once: true });
+
+        // ── Hamburger Menu Toggle ──────────────────────────────────────────
+        var hamburger = document.getElementById("hamburger");
+        var mobileNav = document.getElementById("mobileNav");
+
+        hamburger.addEventListener("click", function (e) {
+            e.stopPropagation();
+            var isOpen = mobileNav.classList.toggle("open");
+            hamburger.classList.toggle("active", isOpen);
+            hamburger.setAttribute("aria-expanded", isOpen);
+            mobileNav.setAttribute("aria-hidden", !isOpen);
+        });
+
+        // Close mobile nav when clicking outside
+        document.addEventListener("click", function () {
+            mobileNav.classList.remove("open");
+            hamburger.classList.remove("active");
+            hamburger.setAttribute("aria-expanded", "false");
+            mobileNav.setAttribute("aria-hidden", "true");
+        });
+
+        mobileNav.addEventListener("click", function (e) {
+            e.stopPropagation();
+        });
+    </script>
+
 </body>
 </html>
